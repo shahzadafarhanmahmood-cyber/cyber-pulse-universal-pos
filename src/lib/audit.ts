@@ -1,4 +1,4 @@
-import { AuditAction } from "@prisma/client";
+import { AuditAction, Prisma } from "@prisma/client";
 
 import { prisma } from "@/lib/prisma";
 
@@ -8,7 +8,7 @@ type AuditInput = {
   action: AuditAction;
   entity: string;
   entityId?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Prisma.InputJsonValue;
 };
 
 export async function logAuditEvent(input: AuditInput) {
